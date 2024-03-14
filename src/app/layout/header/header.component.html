@@ -1,0 +1,71 @@
+<header class="text-gray-600 body-font">
+  <div
+    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+  >
+    <a
+      routerLink="/"
+      class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+        ></path>
+      </svg>
+      <span class="ml-3 text-xl">Shop-Store</span>
+    </a>
+    <nav
+      class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center"
+    >
+      <a routerLink="/products" class="mr-5 hover:text-gray-900">Products</a>
+    </nav>
+    <div
+      class="relative"
+      (mouseenter)="showCart.set(true)"
+      (mouseleave)="showCart.set(false)"
+    >
+      <!-- cart -->
+      <a routerLink="/checkout">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <span class="absolute right-0 px-1 text-lg font-bolt text-white -top-1 bg-red-500 round">5</span>
+      </a>
+      <!-- products in cart -->
+      @if(showCart()){
+      <div
+        [ngClass]="{ 'show-cart-animation': showCart() }"
+        class="absolute right-0 z-30 w-48 p-2 mt-2 text-white rounded-sm bg-slate-400"
+      >
+        <div class="flex items-center justify-between">
+          <span> -shirt</span>
+          <span> -shirt</span>
+        </div>
+        <hr class="my-4 border-gray-500 border-t-1" />
+        <div class="flex justify-between py-3 font-light">
+          <span class="not-italic font-bold">Total: 544</span>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</header>
