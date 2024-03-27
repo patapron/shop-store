@@ -8,12 +8,14 @@ import { Product } from '@shared/models/product.interface';
   standalone: true,
   imports: [CurrencyPipe, RouterLink],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.scss'
+  styleUrl: './card.component.scss',
 })
 export class CardComponent {
   product = input.required<Product>();
   @Output() addToCartEvent = new EventEmitter<Product>();
-  onAddToCart():void{
+
+  onAddToCart(): void {
     this.addToCartEvent.emit(this.product());
   }
+
 }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Signal, inject, input } from '@angular/core';
 import { ProductsService } from '@api/products.service';
 import { Product } from '@shared/models/product.interface';
 import { CurrencyPipe } from '@angular/common';
+import { CartStore } from '@shared/store/shopping-cart.store';
 // import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -18,12 +19,15 @@ export default class DetailsComponent implements OnInit {
 
   private readonly producSvc = inject(ProductsService);
   // private readonly _sanitizer = inject(DomSanitizer);
+  cartSore = inject(CartStore);
 
   ngOnInit(): void {
     this.product = this.producSvc.getProductsById(this.productId());
   }
 
-  onAddToCart() {}
+  onAddToCart() {
+    this.cartSore.addToCart(this.product() as Product);
+  }
 
   generateSvgS(index: number): string {
     let svgContent = '';
